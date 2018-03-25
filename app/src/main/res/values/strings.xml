@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Remote</string>
+    <string name="remotespy_gcm_sender_id">99777731694</string>
 </resources>

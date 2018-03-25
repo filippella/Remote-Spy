@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -17,6 +18,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import org.dalol.remotespy.services.GCMRegistrationIntentService;
+import org.dalol.remotespy.utils.DeviceUtils;
 
 import java.util.ArrayList;
 
@@ -39,7 +43,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        checkPermission();
+        //checkPermission();
+
+        if (DeviceUtils.checkPlayServices(this)) {
+            Intent gcmIntent = new Intent(this, GCMRegistrationIntentService.class);
+            startService(gcmIntent);
+        }
     }
 
     private void checkPermission(){
