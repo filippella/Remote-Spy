@@ -1,4 +1,4 @@
-package org.dalol.remotespy;
+package org.dalol.remotespy.common.fcm;
 
 /**
  * Created by filippo on 01/03/2018.

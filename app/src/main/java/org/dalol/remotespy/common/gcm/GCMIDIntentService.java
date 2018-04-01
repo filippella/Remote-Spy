@@ -1,4 +1,4 @@
-package org.dalol.remotespy.services;
+package org.dalol.remotespy.common.gcm;
 
 import android.content.Intent;
 

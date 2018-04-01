@@ -1,4 +1,4 @@
-package org.dalol.remotespy;
+package org.dalol.remotespy.data.vo;
 
 /**
  * @author Filippo Engidashet [filippo.eng@gmail.com]
@@ -6,7 +6,7 @@ package org.dalol.remotespy;
  * @since Sunday, 25/03/2018 at 03:07.
  */
 
-public class Sms {
+public class SmsVO {
 
     public String displayName;
     public String address;
@@ -17,10 +17,9 @@ public class Sms {
     public boolean isRead;
     public String subject;
 
-
     @Override
     public String toString() {
-        return "Sms{" +
+        return "SmsVO{" +
                 "displayName='" + displayName + '\'' +
                 ", address='" + address + '\'' +
                 ", msg='" + msg + '\'' +

@@ -1,6 +1,6 @@
-package org.dalol.remotespy.api;
+package org.dalol.remotespy.data.api;
 
-import org.dalol.remotespy.ApiResponse;
+import org.dalol.remotespy.data.ApiResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

@@ -1,4 +1,4 @@
-package org.dalol.remotespy.services;
+package org.dalol.remotespy.common.gcm;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import com.google.android.gms.gcm.GcmPubSub;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 
-import org.dalol.remotespy.ApiResponse;
+import org.dalol.remotespy.data.ApiResponse;
 import org.dalol.remotespy.R;
-import org.dalol.remotespy.api.RegisterTokenApi;
+import org.dalol.remotespy.data.api.RegisterTokenApi;
 
 import java.io.IOException;
 
@@ -96,18 +96,18 @@ public class GCMRegistrationIntentService extends IntentService {
                     if (response.isSuccessful()) {
                         ApiResponse apiResponse = response.body();
                         if (apiResponse != null) {
-                            Toast.makeText(GCMRegistrationIntentService.this, apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(GCMRegistrationIntentService.this, apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(GCMRegistrationIntentService.this, response.message(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(GCMRegistrationIntentService.this, response.message(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(GCMRegistrationIntentService.this, response.message(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(GCMRegistrationIntentService.this, response.message(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<ApiResponse> call, Throwable t) {
-                    Toast.makeText(GCMRegistrationIntentService.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(GCMRegistrationIntentService.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 

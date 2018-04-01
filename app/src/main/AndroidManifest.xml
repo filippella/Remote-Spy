@@ -21,10 +21,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".application.MainApplication"
         android:theme="@style/AppTheme">
 
         <receiver
-            android:name=".receiver.GcmBroadcastReceiver"
+            android:name=".common.gcm.GcmBroadcastReceiver"
             android:exported="true"
             android:enabled="true"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -38,14 +39,14 @@
         </receiver>
 
         <service
-            android:name=".services.GCMIDIntentService"
+            android:name=".common.gcm.GCMIDIntentService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
         <service
-            android:name=".services.GCMReceiveListenerService"
+            android:name=".common.gcm.GCMReceiveListenerService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -53,11 +54,11 @@
         </service>
 
         <service
-            android:name=".services.GCMRegistrationIntentService"
+            android:name=".common.gcm.GCMRegistrationIntentService"
             android:exported="true" />
 
         <receiver
-            android:name=".receiver.MyReceiver"
+            android:name=".common.gcm.BootCompletedReceiver"
             android:enabled="true"
             android:priority="0">
 
@@ -83,7 +84,7 @@
         <!--</intent-filter>-->
         <!--</service>-->
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

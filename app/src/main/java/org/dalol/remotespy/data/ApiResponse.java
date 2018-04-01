@@ -1,4 +1,4 @@
-package org.dalol.remotespy;
+package org.dalol.remotespy.data;
 
 /**
  * @author Filippo Engidashet [filippo.eng@gmail.com]
